@@ -1,15 +1,15 @@
 export const loadPosts = async () => {
-    const postReponse = fetch('https://jsonplaceholder.typicode.com/posts')
-    const photosReponse = fetch('https://jsonplaceholder.typicode.com/photos')
+  const postReponse = fetch('https://jsonplaceholder.typicode.com/posts');
+  const photosReponse = fetch('https://jsonplaceholder.typicode.com/photos');
 
-    const [posts, photos] = await Promise.all([postReponse, photosReponse])
+  const [posts, photos] = await Promise.all([postReponse, photosReponse]);
 
-    const postsJson = await posts.json();
-    const photosJson = await photos.json()
+  const postsJson = await posts.json();
+  const photosJson = await photos.json();
 
-    const postsAndPhotos = postsJson.map((post, index) => {
-      return { ...post, cover: photosJson[index].url }
-    })
+  const postsAndPhotos = postsJson.map((post, index) => {
+    return { ...post, cover: photosJson[index].url };
+  });
 
-    return postsAndPhotos;
-}
+  return postsAndPhotos;
+};
